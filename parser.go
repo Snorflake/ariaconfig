@@ -77,7 +77,7 @@ type numberType int
 const (
 	INT numberType = iota
 	FLOAT
-	EXP
+	ERR
 )
 
 //parseNumber parses a *selectStatement and returns the number type as a numberType object
@@ -93,5 +93,5 @@ func parseNumber(stmt *selectStatement) numberType {
 		return FLOAT
 	}
 	fmt.Println(err)
-	return EXP
+	return ERR
 }
