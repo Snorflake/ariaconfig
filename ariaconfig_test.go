@@ -16,20 +16,17 @@ float = 0.56
 func TestEverything(t *testing.T) {
 	p := newParser(teststr)
 	if p == nil {
-		t.Error("parser didn't initialize correctly")
-		t.FailNow()
+		t.Fatal("parser didn't initialize correctly")
 	}
 
 	_, err := p.parse() // get rid of first left itemLeftMeta
 	if err != nil {
-		t.Error("parser failed to parse leftmeta")
-		t.FailNow()
+		t.Fatal("parser failed to parse leftmeta")
 	}
 
 	for stmt, err := p.parse(); ; stmt, err = p.parse() {
 		if err != nil {
-			t.Errorf("Unexpected error: %v", err.Error())
-			t.FailNow()
+			t.Fatalf("Unexpected error: %v", err.Error())
 		} else if stmt == nil {
 			break //we hit right meta and nothing broke
 		}
