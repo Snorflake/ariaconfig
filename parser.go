@@ -83,14 +83,14 @@ const (
 //parseNumber parses a *selectStatement and returns the number type as a numberType object
 //This is really ghetto
 func parseNumber(stmt *selectStatement) numberType {
-	_, err := strconv.ParseFloat(stmt.value, 64)
-	if err == nil {
-		return FLOAT
-	}
-	fmt.Println(err)
-	_, err = strconv.ParseInt(stmt.value, 0, 64)
+	_, err := strconv.ParseInt(stmt.value, 0, 64)
 	if err == nil {
 		return INT
+	}
+	fmt.Println(err)
+	_, err = strconv.ParseFloat(stmt.value, 64)
+	if err == nil {
+		return FLOAT
 	}
 	fmt.Println(err)
 	return EXP
